@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments::head(title='Sword\'s for sale')"></head>
+<head th:replace="fragments::head(title = 'Sword\'s for sale')"></head>
 <body>
 <nav th:replace="fragments::menu"></nav>
 <h1>Official sword shop</h1>
@@ -8,6 +8,7 @@
     <li th:each="sword:${swords}" th:object="${sword}">
         <span th:text="|*{name} ('&euro;' *{price})|"></span>
         <span th:if="*{twohanded}">Two handed weapon</span>
+        <a th:href="@{/swords/{id}(id=*{id})}">Detail</a>
     </li>
 </ul>
 <img th:src="@{/images/mordhau2.jfif}" alt="Mordhau guy">
