@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>MordhauProject</title>
-    <link rel="icon" href="icons/mordhauico.ico" type=\"image/x-icon\">
-    <link rel="stylesheet" href="css/mordhau.css">
-</head>
+<head th:replace="fragments::head(title='Sword\'s for sale')"></head>
 <body>
+<nav th:replace="fragments::menu"></nav>
 <h1>Official sword shop</h1>
 <ul class="zebra">
     <li th:each="sword:${swords}" th:object="${sword}">
@@ -14,6 +10,6 @@
         <span th:if="*{twohanded}">Two handed weapon</span>
     </li>
 </ul>
-<img src="images/mordhau2.jfif" alt="index pic">
+<img th:src="@{/images/mordhau2.jfif}" alt="Mordhau guy">
 </body>
 </html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)" xmlns:th="http://www.thymeleaf.org">
+    <title th:text="${title}"></title>
+    <link rel="icon" th:href="@{/icons/mordhauico.ico}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/css/mordhau.css}">
+</head>
+<body>
+<nav th:fragment="menu" xmlns:th="http://www.thymeleaf.org">
+    <ul>
+        <li><a th:href="@{/}">Mordhau</a></li>
+        <li><a th:href="@{/swords}">Sword Shop</a></li>
+    </ul>
+</nav>
+</body>
+</html>
