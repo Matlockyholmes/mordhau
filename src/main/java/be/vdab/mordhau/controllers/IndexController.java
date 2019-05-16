@@ -1,5 +1,7 @@
 package be.vdab.mordhau.controllers;
 
+import be.vdab.mordhau.Domain.Adres;
+import be.vdab.mordhau.Domain.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ public class IndexController {
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("index","welcome",hourChecker());
         modelAndView.addObject("activity",prayingOrSlaughtering());
+        modelAndView.addObject("webadmin",new Person("Matthias","Heylen",0,false,
+                new Adres("Vitsenveld","87",2550,"Kontich")));
         return modelAndView;
     }
 

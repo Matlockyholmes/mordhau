@@ -11,5 +11,16 @@
 <img src="images/indexhau.jpg" alt="index pic" class=\"fullwidth\">
 <h2>Good <span th:text="${welcome}"></span></h2>
 <h3>We are <span th:text="${activity}"></span> today</h3>
+<h4>Webadmin data</h4>
+<dl th:object="${webadmin}">
+    <dt>Naam:</dt>
+    <dd th:text="*{name}"></dd>
+    <dt>Aantal kinderen:</dt>
+    <dd th:text="*{amountOfChildren}"></dd>
+    <dt>Gehuwd:</dt>
+    <dd th:text="*{married} ? 'Yes' : 'No'"></dd>
+    <dt>Adres:</dt>
+    <dd th:object="${webadmin.adres}" th:text="|*{street} *{residentialNr} *{zipcode} *{placeOfResidence}|"></dd>
+</dl>
 </body>
 </html>
