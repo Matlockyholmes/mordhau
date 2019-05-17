@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments::head(title='operating system')"></head>
+<head th:replace="fragments::head(title='Operating System')"></head>
 <body>
 <nav th:replace="fragments::menu"></nav>
 <h1>Your operating system is: <span th:text="${os} == null ? 'obekend' : ${os}"></span></h1>

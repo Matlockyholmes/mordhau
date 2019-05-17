@@ -18,5 +18,6 @@
     <dt>Adres:</dt>
     <dd th:object="${webadmin.adres}" th:text="|*{street} *{residentialNr} *{zipcode} *{placeOfResidence}|"></dd>
 </dl>
+<div th:if="${visited}">Welcome back for pillagé</div>
 </body>
 </html>
