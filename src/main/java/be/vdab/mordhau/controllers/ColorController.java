@@ -11,18 +11,18 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("kleuren")
+@RequestMapping("colors")
 class ColorController {
     @GetMapping
-    public ModelAndView showPage(@CookieValue(name = "kleur", required = false) String kleur) {
-        return new ModelAndView("kleuren","kleur",kleur);
+    public ModelAndView showPage(@CookieValue(name = "color", required = false) String color) {
+        return new ModelAndView("colors","color",color);
     }
-    @GetMapping("{kleur}")
-    public ModelAndView choseColor(@PathVariable String kleur, HttpServletResponse response){
-        Cookie cookie = new Cookie("kleur",kleur);
+    @GetMapping("{color}")
+    public ModelAndView choseColor(@PathVariable String color, HttpServletResponse response){
+        Cookie cookie = new Cookie("color",color);
         cookie.setMaxAge(31_536_000);
         cookie.setPath("/");
         response.addCookie(cookie);
-        return new ModelAndView("kleuren");
+        return new ModelAndView("colors");
     }
 }
