@@ -12,10 +12,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 @RequestMapping("/")
 public class IndexController {
+    private final AtomicInteger amountOfViews = new AtomicInteger();
     @GetMapping
     public ModelAndView index(@CookieValue(name = "visited", required = false) String visited, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView("index","welcome",hourChecker());
@@ -29,6 +31,7 @@ public class IndexController {
         if(visited != null){
             modelAndView.addObject("visited",true);
         }
+        modelAndView.addObject("amountofviews",amountOfViews.incrementAndGet());
         return modelAndView;
     }
 
