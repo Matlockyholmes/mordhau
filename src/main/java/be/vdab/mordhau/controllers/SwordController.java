@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("swords")
@@ -30,5 +32,20 @@ public class SwordController {
                 ifPresent(sword -> modelAndView.addObject("sword",sword));
         return modelAndView;
     }
-
+    public List<BigDecimal> uniquePrices(){
+        return Arrays.stream(swordArray).map(sword -> sword.getPrice())
+                .distinct().sorted().collect(Collectors.toList());
+    }
+    @GetMapping("prices")
+    public ModelAndView showPrices(){
+        return new ModelAndView("prices","prices",uniquePrices());
+    }
+    public List<Sword> findSword(BigDecimal price){
+        return Arrays.stream(swordArray).filter(sword -> sword.getPrice().compareTo(price) == 0).collect(Collectors.toList());
+    }
+    @GetMapping("prices/{price}")
+    public ModelAndView swordsWithAPrice(@PathVariable BigDecimal price){
+        return new ModelAndView("prices","swords",findSword(price))
+                .addObject("prices",uniquePrices());
+    }
 }
